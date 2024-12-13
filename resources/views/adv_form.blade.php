@@ -23,25 +23,25 @@
             </select>
         </div>
         <div class="mb-3">
-            @error('title')
-                <p>{{$message}}</p>
-            @enderror
             <label for="title" class="form-label">Заголовок</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
+            <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}" style="{{$errors -> has('title') ? 'border-color: red;' : ''}}">
+            @error('title')
+                <p class="alert alert-danger mt-1">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
-            @error('description')
-                <p>{{$message}}</p>
-            @enderror
             <label for="description" class="form-label">Описание</label>
-            <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+            <textarea class="form-control" id="description" rows="3" name="description" style="{{$errors -> has('description') ? 'border-color: red;' : ''}}"></textarea>
+            @error('description')
+                <p class="alert alert-danger mt-1">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
-            @error('ad_photo')
-                <p>{{$message}}</p>
-            @enderror
             <input class="form-control-file" type="file" id="ad_photo" name="ad_photo">
         </div>
+            @error('ad_photo')
+                <p class="alert alert-danger mt-1">{{$message}}</p>
+            @enderror
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
 @endsection
